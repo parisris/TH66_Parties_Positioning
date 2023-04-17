@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thailand Political Spectrum Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header>
+      <h1>Thailand Political Spectrum Map</h1>
+      <h3>Inspired by <a href="https://www.youtube.com/@FAROSECHANNEL">FAROS</a></h3>
+    </header>
+
+    <main>
+      <div id="graph-container">
+        <div class="axis-x">
+          <div class="axis-x-label-left">Liberal</div>
+          <div class="axis-x-label-right">Conservative</div>
+        </div>
+        <div class="axis-y">
+          <div class="axis-y-label-top">Capitalism</div>
+          <div class="axis-y-label-bottom">Socialism</div>
+        </div>
+        <svg id="graph">
+          <path class="graph-line" d="M 0 0"></path>
+        </svg>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

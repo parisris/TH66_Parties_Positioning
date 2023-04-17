@@ -1,0 +1,101 @@
+#graph-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  margin: auto;
+  border: 2px solid #888;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.axis-x {
+  position: absolute;
+  bottom: 45%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #000;
+}
+
+.axis-x-label-left {
+  position: absolute;
+  bottom: -15px;
+  left: 20px;
+  text-align: left;
+  transform: translateX(-50%);
+  font-size: 12px;
+}
+
+.axis-x-label-right {
+  position: absolute;
+  bottom: -15px;
+  right: 40px;
+  text-align: right;
+  transform: translateX(50%);
+  font-size: 12px;
+}
+
+.axis-y {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: #000;
+}
+
+.axis-y-label-top {
+  position: absolute;
+  top: -2%;
+  left: -30px;
+  text-align: center;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+.axis-y-label-bottom {
+  position: absolute;
+  bottom: -2%;
+  left: -25px;
+  text-align: center;
+  transform: translateY(50%);
+  font-size: 12px;
+}
+
+.party {
+  position: relative;
+  cursor: move;
+  border-radius: 20%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.party:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.2);
+}
+
+
+.line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+}
