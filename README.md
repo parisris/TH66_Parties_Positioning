@@ -1,4 +1,4 @@
-#Thailand Political Spectrum Map
+# Thailand Political Spectrum Map
 
 This is a web application that displays a political spectrum map of Thailand. The map shows the positions of different political parties on two axes: the x-axis represents the spectrum between liberal and conservative, while the y-axis represents the spectrum between capitalism and socialism.
 
