@@ -107,7 +107,7 @@
 
 h2 {
   font-family: 'Roboto', sans-serif;
-  font-size: 1 pt;
+  font-size: 15pt;
 }
 
 a {
@@ -181,4 +181,5 @@ body.light-mode{
 
 header {
   margin-left: 2.5%;
+  padding-bottom: 20px;
 }
