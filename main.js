@@ -1,3 +1,4 @@
+
 // Define the parties and their initial positions
 var parties = [
   { x: 70, y: 440, logo: 'images/party1.png' },
@@ -17,7 +18,7 @@ function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
-}
+};
 
 // Initialize the parties on the graph
 function initParties() {
@@ -34,22 +35,22 @@ function initParties() {
   if (window.innerWidth < 480) { // Mobile and Tablet screens
     rowHeight = 75;
     xStart = 20;
-    yStart = 440;
+    yStart = 430;
     xStep = 75;
-    logoSize = Math.min(window.innerWidth * 0.125, 75);
-} else if (window.innerWidth < 1024) {
-    rowHeight = 75;
+    logoSize = Math.min(window.innerWidth * 0.15, 75);
+} else if (window.innerWidth < 768) {
+    rowHeight = 80;
     xStart = 30;
-    yStart = 440;
+    yStart = 430;
     xStep = 100;
     logoSize = Math.min(window.innerWidth * 0.125, 75);
 } else { // Desktop screens
     rowHeight = 0;
     xStart = 70;
-    yStart = 440;
+    yStart = 430;
     xStep = 100;
     logoSize = Math.min(window.innerWidth * 0.125, 75);
-}
+  }
 
   // Loop through the parties array and create party elements
   parties.forEach(function(party, index) {
@@ -57,6 +58,9 @@ function initParties() {
     if (window.innerWidth < 480) { // Mobile and Tablet screens
       var x = xStart + (index%4 * xStep);
       var y = yStart + (Math.floor(index / 4) * rowHeight)
+    } else if (window.innerWidth < 768) {
+      var x = xStart + (index%5 * xStep);
+      var y = yStart + (Math.floor(index / 5) * rowHeight)
     } else {
       var x = xStart + (index * xStep);
       var y = yStart + (Math.floor(index / 7) * rowHeight)
@@ -78,7 +82,7 @@ function initParties() {
     // Make the party draggable
     dragElement(partyElement);
   });
-}
+};
 
 // Call the initParties function to initialize the parties on page load
 initParties();
@@ -93,6 +97,7 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
   elmnt.addEventListener('mousedown', dragMouseDown);
+  elmnt.addEventListener('touchstart', dragTouchStart);
 
   function dragMouseDown(e) {
     e.preventDefault();
@@ -104,21 +109,41 @@ function dragElement(elmnt) {
     document.addEventListener('mousemove', elementDrag);
   }
 
+  function dragTouchStart(e) {
+    e.preventDefault();
+    // get the touch position at startup:
+    pos3 = e.touches[0].clientX;
+    pos4 = e.touches[0].clientY;
+    document.addEventListener('touchend', closeDragElement);
+    // call a function whenever the touch moves:
+    document.addEventListener('touchmove', elementDrag);
+  }
+
   function elementDrag(e) {
     e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    if (e.type === 'touchmove') {
+      // calculate the new touch position:
+      pos1 = pos3 - e.touches[0].clientX;
+      pos2 = pos4 - e.touches[0].clientY;
+      pos3 = e.touches[0].clientX;
+      pos4 = e.touches[0].clientY;
+    } else {
+      // calculate the new mouse position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+    }
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
-    /* stop moving when mouse button is released:*/
+    /* stop moving when mouse button or touch is released:*/
     document.removeEventListener('mouseup', closeDragElement);
     document.removeEventListener('mousemove', elementDrag);
+    document.removeEventListener('touchend', closeDragElement);
+    document.removeEventListener('touchmove', elementDrag);
   }
-}
+};

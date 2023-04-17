@@ -1,33 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Thailand Political Spectrum Map</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thailand Political Spectrum Map</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
     <header>
-      <h1>Thailand Political Spectrum Map</h1>
-      <h3>Inspired by <a href="https://www.youtube.com/@FAROSECHANNEL">FAROS</a></h3>
-    </header>
-
-    <main>
-      <div id="graph-container">
-        <div class="axis-x">
-          <div class="axis-x-label-left">Liberal</div>
-          <div class="axis-x-label-right">Conservative</div>
-        </div>
-        <div class="axis-y">
-          <div class="axis-y-label-top">Capitalism</div>
-          <div class="axis-y-label-bottom">Socialism</div>
-        </div>
-        <svg id="graph">
-          <path class="graph-line" d="M 0 0"></path>
-        </svg>
+      <div class="_header">
+        <h2>Thailand Political Spectrum Map &#128161;</h2>
+        <p>Inspired by <a href="https://www.youtube.com/@FAROSECHANNEL">FAROS</a> &#x1F9E0;
+          <br>Dev by
+        <a href="https://twitter.com/pparisris">@pparisris</a>  &#128421;</p>
       </div>
-    </main>
+    </header>
+  <main>
+    <div id="graph-container">
+      <div class="axis-x">
+        <div class="axis-x-label-left">Liberal</div>
+        <div class="axis-x-label-right">Conservative</div>
+      </div>
+      <div class="axis-y">
+        <div class="axis-y-label-top">Capitalism</div>
+        <div class="axis-y-label-bottom">Socialism</div>
+      </div>
+      <svg id="graph">
+        <path class="graph-line" d="M 0 0"></path>
+      </svg>
+    </div>
+  </main>
+  <script src="main.js"></script>
+  <div class="theme-container shadow-dark">
+    <img id="theme-icon" src="https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg" alt="ERR">
+  </div>
+  <script>
+    document.body.style = "background-color: var(--bs-dark);transition: 0.5s;"
+    const sun = "https://www.uplooder.net/img/image/55/7aa9993fc291bc170abea048589896cf/sun.svg";
+    const moon = "https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg"
 
-    <script src="main.js"></script>
-  </body>
+    var theme = "dark";
+    const root = document.querySelector(":root");
+    const container = document.getElementsByClassName("theme-container")[0];
+    const themeIcon = document.getElementById("theme-icon");
+    container.addEventListener("click", setTheme);
+
+    function setTheme() {
+      switch (theme) {
+        case "dark":
+          setLight();
+          theme = "light";
+          break;
+        case "light":
+          setDark();
+          theme = "dark";
+          break;
+      }
+    }
+
+    function setLight() {
+      root.style.setProperty(
+        "--bs-dark",
+        "linear-gradient(318.32deg, #c3d1e4 0%, #dde7f3 55%, #d4e0ed 100%)"
+      );
+      container.classList.remove("shadow-dark");
+      setTimeout(() => {
+        container.classList.add("shadow-light");
+        themeIcon.classList.remove("change");
+      }, 300);
+      themeIcon.classList.add("change");
+      themeIcon.src = sun;
+      document.body.classList.add("light-mode"); // add dark-mode class to body
+
+    }
+
+    function setDark() {
+      root.style.setProperty("--bs-dark", "#212529");
+      container.classList.remove("shadow-light");
+      setTimeout(() => {
+        container.classList.add("shadow-dark");
+        themeIcon.classList.remove("change");
+      }, 300);
+      themeIcon.classList.add("change");
+      themeIcon.src = moon;
+      document.body.classList.remove("light-mode"); // remove light-mode class from body
+      document.body.classList.add("dark-mode"); // add dark-mode class to body
+    }
+  </script>
+
+</body>
+
 </html>

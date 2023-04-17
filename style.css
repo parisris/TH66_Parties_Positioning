@@ -1,15 +1,21 @@
 #graph-container {
-  width: 100%;
+  width: 95%;
   height: 400px;
   position: relative;
   margin: auto;
-  border: 2px solid #888;
+  border: 2px solid #212121;
   border-radius: 10px;
-  background-color: #f8f8f8;
+  background-color: #212121;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.light-mode #graph-container {
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .axis-x {
@@ -18,25 +24,29 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: #000;
+  background-color: #b3b3b3;
+}
+
+.light-mode #graph-container .axis-x {
+  background-color: #23282c;
 }
 
 .axis-x-label-left {
   position: absolute;
-  bottom: -15px;
-  left: 20px;
+  bottom: -25px;
+  left: 35px;
   text-align: left;
   transform: translateX(-50%);
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .axis-x-label-right {
   position: absolute;
-  bottom: -15px;
-  right: 40px;
+  bottom: -25px;
+  right: 60px;
   text-align: right;
   transform: translateX(50%);
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .axis-y {
@@ -45,25 +55,29 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background-color: #000;
+  background-color: #b3b3b3;
+}
+
+.light-mode #graph-container .axis-y {
+  background-color: #23282c;
 }
 
 .axis-y-label-top {
   position: absolute;
-  top: -2%;
-  left: -30px;
+  top: -4%;
+  left: -45px;
   text-align: center;
   transform: translateY(-50%);
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .axis-y-label-bottom {
   position: absolute;
-  bottom: -2%;
-  left: -25px;
+  bottom: -4%;
+  left: -40px;
   text-align: center;
   transform: translateY(50%);
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .party {
@@ -79,7 +93,6 @@
   transform: scale(1.2);
 }
 
-
 .line {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -92,10 +105,80 @@
   }
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1 pt;
 }
 
-h1 {
-  font-family: "Roboto", sans-serif;
+a {
+  color: #F4EEE0;
+}
+
+.light-mode a {
+  color: #212121;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #333;
+  color: #b3b3b3;
+}
+
+body.light-mode{
+  background-color: #b3b3b3;
+  color: #212121;
+}
+
+:root{
+  --bs-dark: #212121;
+}
+
+.theme-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.theme-container:hover {
+  opacity: 0.8;
+}
+
+.shadow-dark {
+  background: linear-gradient(145deg, #23282c, #1e2125);
+  box-shadow: 17px 17px 23px #1a1d20,
+    -17px -17px 23px #282d32, inset 5px 5px 4px #1e2226,
+    inset -5px -5px 4px #24282c;
+}
+
+.shadow-light {
+  box-shadow: 7px 7px 15px -10px #bbcfda, -4px -4px 13px #ffffff,
+    inset 7px 7px 3px rgba(209, 217, 230, 0.35),
+    inset -11px -11px 3px rgba(255, 255, 255, 0.3)
+}
+
+@keyframes change {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.4);
+  }
+}
+
+.change {
+  animation-name: change;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+
+header {
+  margin-left: 2.5%;
 }
