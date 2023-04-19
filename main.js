@@ -37,7 +37,7 @@ function initParties() {
     xStart = 20;
     yStart = 430;
     xStep = 75;
-    logoSize = Math.min(window.innerWidth * 0.15, 75);
+    logoSize = Math.min(window.innerWidth * 0.135, 75);
 } else if (window.innerWidth < 768) {
     rowHeight = 80;
     xStart = 30;
